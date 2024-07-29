@@ -1,0 +1,111 @@
+These are the revision notes of my Week1 of coding practice
+I have written notes for each problem that I solved this week for myself so I know how did I solve these problems
+
+**Merge Sorted Array**
+
+Given : 2 sorted arrays nums1, nums2 and their sizes m,n (nums1 is array of size (m+n))
+- initialize 3 variables 
+	i = m-1
+	j = n-1
+	k = m+n-1
+- use a while loop that keeps iterating unless i =  0 or j = 0
+ that means it will keep going until both arrays have elements , if any of the ends the loop will break
+
+- inside this loop write a condition 
+ if nums1[i] > nums2[j]
+ then place nums1[i] at nums1[k]
+ we are comparing the last element of both of the arrays, this condition will place the largest element in the last position of the merged array
+ and then we decrement i by 1
+ and in the else part we do this
+ place nums2[j] at nums1[k] and decrement j by 1
+ after this still inside the loop we decrement k by 1
+
+- use another while loop that runs until j = 0 
+ it does this 
+ nums1[k]=num2[j] and j = j-1
+ we do this to ensure that all elements of nums2 are successfully placed in teh merged array even if the nums1 array has no more elements to be compared
+
+
+**Pascal Triangle**
+
+Given : number of rows->numRows
+
+- declare an empty list/array called triangle
+- make a loop that runs numRows-1 times
+- in each iteration it initializes another list/array called row and places '1' in the start and end of the row through this line of code
+ row = [1] * (i+1) where i is in range(numRows)
+- then use another loop that goes from 1 to i-1 
+ that means it is basically the middle elements of the triangle.. 
+- then do this for summing up the middle elements of the row above to find the middle elements of the current row
+ row[j] = triangle[i-1][j-1] + triangle[i-1][j]
+- then outside of this loop but still in the outer loop append the current row(that itself is a list/array) to the triangle array
+ this will generate the pascal triangle of the length of the given number of rows
+
+**Pascal Triangle II**
+
+Given : rowIndex
+
+- you have to return the row of the triangle at a given row index so just write the code to generate pascal triangle upto the given rowIndex+1 and in teh return the row as triangle[rowIndex]
+
+**Best price to sell and buy: maxProfit**
+
+Given : an array of prices
+
+- initialize two variables min_price = highest number possible (inf) and max_price = 0
+- iterate over all the prices in the array through a loop
+- inside the loop write a condition that
+ if at any iterator the current_price is less than the min_price
+ the min_price will be updated to the current price
+ min_price is the price to buy a product
+- outside of this condition but inside the loop we calculate the profit that is profit= current_price - min_price
+- then inside another if condition we compare the calculated profit wit the max_profit
+ if profit > max_profit
+ then max_profit is updated by the calculated profit
+ max_profit will have the amount that we can gain by buying at the lowest price and selling at the highest
+ in the end of this loop max_profit will have the answer
+
+**Single Number**
+
+We have to find the unique element in the array with O(n) complexity
+
+Given : array of numbers -> nums
+
+-For solving this problem we are going to make use of the XOR property : a XOR 0 = a and a XOR a = 0
+- initialize a variavle result = 0 
+- iterate over the numbers through a loop 
+- for each interation do this:
+	result = result ^ num (^ is symbol for XOR in python)
+- in the end result will have the unique number in teh array
+
+**Majority Element**
+
+We have to find the most occurent element in an array
+
+Given :  array of numbers -> nums
+
+- We are going to use Boyre-More voting algorith for this problem
+- initialize 2 variables count, candidate = 0
+- iterate iver each number of the array
+- for each iteration do this
+ if count is 0
+ update candidate = num (the current number) and count = 1
+ else if num is the same as candiadate 
+ update count += 1
+ if num is not same as candidate 
+ count -=1
+- in the end of this loop candidate will have that number that is occured the most thus the majority element
+
+**Contains Duplicates**
+
+We have to check if an array contains duplicates or not
+
+Given : array of numbers -> nums
+
+- initiaize an empty set (or any data structure depending on the coding language)
+- iterate over each number through a for:each loop
+- if the element is already in the set return True
+- if it is not in the set add this number to the set
+- in the end outside of the loop return False
+- so if the array does have duplicates it will eventually return True, if not then after iterating all numbers it will return False
+ 
+
