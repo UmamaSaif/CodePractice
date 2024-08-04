@@ -1,0 +1,84 @@
+Contains Nearby Duplicate
+
+Given: An integer array nums and an integer k.
+
+Goal: Check if there are two indices i and j such that nums[i] == nums[j] and |i - j| <= k.
+Approach:
+Initialize an empty dictionary index_map.
+Iterate through nums using enumerate to keep track of both the element and its index.
+If the element is in index_map and the difference between the current index and the stored index is less than or equal to k, return True.
+Otherwise, update the dictionary with the current index for the element.
+If no such indices are found, return False.
+
+Summary Ranges
+
+Given: A sorted integer array nums.
+
+Goal: Create a list of strings that summarizes the ranges of consecutive numbers.
+Approach:
+Initialize an empty list result and get the length of nums.
+If nums is empty, return result.
+Set start to the first element.
+Iterate through the array and check if the current number is not consecutive to the previous one.
+If not consecutive, add the range (or single number) to result and update start to the current number.
+Return the result list.
+
+Missing Number
+
+Given: An integer array nums containing n distinct numbers taken from 0, 1, 2, ..., n.
+
+Goal: Find the missing number in the array.
+
+Approach:
+
+First Solution (Optimal Time Complexity):
+Use a set to store the numbers in nums.
+Iterate through 0 to n and check if each number is in the set.
+If a number is missing, return it.
+
+Second Solution (Optimal Space Complexity):
+Calculate the expected sum of 0 to n using the formula n * (n + 1) // 2.
+Subtract the actual sum of the numbers in nums from the expected sum to find the missing number.
+
+Move Zeroes
+
+Given: An integer array nums.
+
+Goal: Move all the zeros to the end while maintaining the relative order of the non-zero elements.
+Approach:
+Initialize a variable non_zero_index to 0.
+Iterate through nums and for each non-zero element, place it at non_zero_index and increment non_zero_index.
+After moving all non-zero elements, fill the remaining positions with zeros.
+
+Intersection of Two Arrays
+
+Given: Two integer arrays nums1 and nums2.
+
+Goal: Return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays.
+
+Approach:
+
+GPT's Optimized Solution:
+Convert both arrays to sets and return the intersection of these sets.
+My Solution:
+Iterate through nums1 and for each element that is in nums2 and not already in the intersection list, add it to the intersection list.
+
+NumArray - Range Sum Query
+
+Given: An integer array nums.
+
+Goal: Implement the NumArray class to efficiently compute the sum of elements between indices left and right inclusive.
+Approach:
+Initialization:
+Use a prefix sum array prefix_sum to store the cumulative sum up to each index.
+sumRange Method:
+Return the sum from left to right by subtracting the prefix sum at left - 1 from the prefix sum at right.
+
+Intersection of Two Arrays II
+
+Given: Two integer arrays nums1 and nums2.
+
+Goal: Return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays.
+Approach:
+Use Counter from the collections module to count the occurrences of each element in both arrays.
+For each element in the first counter, check if it is also in the second counter and extend the intersection list with the minimum count of the element in both arrays.
