@@ -24,4 +24,21 @@ class Solution(object):
                 return max(unique_nums)
         return maximum
 
+"""
+GPT's improved solution
+"""
+class Solution(object):
+    
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        unique_nums = list(set(nums))  # Remove duplicates by converting to a set
+        unique_nums.sort(reverse=True)  # Sort the numbers in descending order
         
+        if len(unique_nums) >= 3:
+            return unique_nums[2]  # Return the third maximum
+        else:
+            return unique_nums[0]  # If there are less than 3 unique numbers, return the maximum
+     
